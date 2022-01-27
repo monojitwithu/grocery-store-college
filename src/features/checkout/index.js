@@ -11,10 +11,10 @@ function submitOrder(values, cart) {
   const { street, city, state, zipcode, deliverytime } = values.order;
 
   const user = JSON.parse(localStorage.getItem("user"));
-  let name = user.first_name + " " + user.last_name;
-  let email = user.email;
-  let user_id = user.id;
-  let order_total = localStorage.getItem("cartTotal");
+  const name = user.first_name + " " + user.last_name;
+  const email = user.email;
+  const user_id = user.id;
+  const order_total = localStorage.getItem("cartTotal");
   console.log("Order Total: ", order_total);
 
   fetchApi(
@@ -32,13 +32,13 @@ function submitOrder(values, cart) {
         deliverytime,
         user_id,
         order_total,
-        order_items_attributes: cart.map(item => ({
+        order_items_attributes: cart.map((item) => ({
           product_id: item.id,
-          quantity: item.quantity
-        }))
-      }
+          quantity: item.quantity,
+        })),
+      },
     }
-  ).then(json => {
+  ).then((json) => {
     console.log("JSON response from fetch post api orders", json);
     if (json.errors) {
       alert("something went wrong!");
@@ -55,7 +55,7 @@ function Checkout(props) {
     <Container>
       <Grid>
         <Grid.Column width={4}>
-          <CheckoutForm onSubmit={values => submitOrder(values, cart)} />
+          <CheckoutForm onSubmit={(values) => submitOrder(values, cart)} />
         </Grid.Column>
         <Grid.Column width={12}>
           <Cart />
@@ -67,7 +67,7 @@ function Checkout(props) {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 }
 

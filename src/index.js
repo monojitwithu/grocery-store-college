@@ -4,13 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
-import css from './grocerystore.css'
+import css from "./grocerystore.css";
 
 import App from "./App";
 import store from "./config/store";
 
 const app = (
-  <Provider store={store}>   
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
