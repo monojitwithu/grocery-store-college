@@ -10,23 +10,23 @@ import {
   Grid,
   Icon,
   Container,
-  Table
+  Table,
 } from "semantic-ui-react";
 
 class Order extends React.Component {
   state = {
     order: null,
-    loading: true
+    loading: true,
   };
 
   componentDidMount() {
     fetchApi(
       "get",
       `https://grocery-delivery-backend.herokuapp.com/api/v1/orders/${this.props.id}`
-    ).then(json => {
+    ).then((json) => {
       this.setState({
         order: json,
-        loading: false
+        loading: false,
       });
     });
   }
@@ -41,7 +41,7 @@ class Order extends React.Component {
       zipcode,
       deliverytime,
       order_items,
-      order_total
+      order_total,
     } = this.state.order;
     return (
       <Container>
@@ -91,7 +91,7 @@ class Order extends React.Component {
           </Table.Header>
           <Table.Body>
             {order_items &&
-              order_items.map(item => {
+              order_items.map((item) => {
                 let total = item.product.price * item.quantity;
                 // let eachPrice = item.product.price * 1;
                 return (

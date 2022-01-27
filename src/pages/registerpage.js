@@ -5,7 +5,7 @@ import {
   Grid,
   Header,
   Message,
-  Segment
+  Segment,
 } from "semantic-ui-react";
 
 class Register extends Component {
@@ -17,18 +17,18 @@ class Register extends Component {
       last_name: "",
       username: "",
       password: "",
-      email: ""
+      email: "",
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleSignUpUserProfile = event => {
+  handleSignUpUserProfile = (event) => {
     event.preventDefault();
     this.fetchRegister();
     this.props.history.push("/");
@@ -39,7 +39,7 @@ class Register extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         user: {
@@ -47,12 +47,12 @@ class Register extends Component {
           last_name: this.state.last_name,
           username: this.state.username,
           password: this.state.password,
-          email: this.state.email
-        }
-      })
+          email: this.state.email,
+        },
+      }),
     })
-      .then(resp => resp.json())
-      .then(response => {
+      .then((resp) => resp.json())
+      .then((response) => {
         console.log("Sign Up Response from fetch: ", response);
         if (response.error === "failed to create user") {
           alert("This user already exists");
@@ -78,7 +78,7 @@ class Register extends Component {
           <Segment>
             <Form
               size="large"
-              onSubmit={event => this.handleSignUpUserProfile(event)}
+              onSubmit={(event) => this.handleSignUpUserProfile(event)}
             >
               <Form.Input
                 fluid

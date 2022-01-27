@@ -51,9 +51,9 @@ function CheckoutForm(props) {
               "5:00pm - 6:00pm": "5:00pm - 6:00pm",
               "6:00pm - 7:00pm": "6:00pm - 7:00pm",
               "7:00pm - 8:00pm": "7:00pm - 8:00pm",
-              "8:00pm - 9:00pm": "8:00pm - 9:00pm"
+              "8:00pm - 9:00pm": "8:00pm - 9:00pm",
             }}
-          ></Field>
+          />
         </Form.Field>
 
         <Button color="green" type="submit">
@@ -65,7 +65,7 @@ function CheckoutForm(props) {
 }
 
 CheckoutForm = reduxForm({
-  form: "checkout"
+  form: "checkout",
 })(CheckoutForm);
 
 export default CheckoutForm;

@@ -9,7 +9,7 @@ class CartPage extends React.Component {
   componentDidMount() {
     localStorage.getItem("jwt")
       ? this.setState({
-          visible: false
+          visible: false,
         })
       : this.setState({ visible: true });
   }
