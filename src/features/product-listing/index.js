@@ -8,7 +8,7 @@ import {
   Loader,
   Menu,
   Input,
-  Pagination
+  Pagination,
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { paginate } from "../../utils/paginate";
@@ -22,7 +22,7 @@ class ProductListing extends React.Component {
     activeItem: "All",
     filteredProducts: [],
     pageSize: 12,
-    activePage: 1
+    activePage: 1,
   };
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class ProductListing extends React.Component {
     fetchApi(
       "get",
       "https://grocery-delivery-backend.herokuapp.com/api/v1/products"
-    ).then(json => {
+    ).then((json) => {
       // fetchApi(
       //   "get",
       //   "https://grocery-delivery-backend.herokuapp.com/api/v1/products"
@@ -40,27 +40,27 @@ class ProductListing extends React.Component {
       this.setState({
         loading: false,
         products: this.props.products,
-        filteredProducts: this.props.products
+        filteredProducts: this.props.products,
       });
     });
   }
 
   //Collect info as it is typed and update state
-  handleChange = input => {
+  handleChange = (input) => {
     this.setState({
-      [input.target.name]: input.target.value
+      [input.target.name]: input.target.value,
     });
     const lowercasedSearchInput = this.state.search.toLowerCase();
     //console.log("Search input: ", lowercasedSearchInput);
 
     //search filtered products in state
-    const searchResults = this.state.products.filter(product => {
+    const searchResults = this.state.products.filter((product) => {
       let lowercasedProducts = product.name.toLowerCase();
       return lowercasedProducts.includes(lowercasedSearchInput);
     });
 
     this.setState({
-      filteredProducts: searchResults
+      filteredProducts: searchResults,
     });
   };
 
@@ -72,73 +72,73 @@ class ProductListing extends React.Component {
     this.setState({
       activeItem: name,
       filteredProducts: this.props.products,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickFruitsAndVegetables = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Fruits & Vegetables"
+      (product) => product.category === "Fruits & Vegetables"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickBeverages = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Beverages"
+      (product) => product.category === "Beverages"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickBakeryAndBread = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Bakery & Bread"
+      (product) => product.category === "Bakery & Bread"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickDairyAndEggs = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Dairy & Eggs"
+      (product) => product.category === "Dairy & Eggs"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickFrozenFoods = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Frozen Food"
+      (product) => product.category === "Frozen Food"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
   handleItemClickPantry = (e, { name }) => {
     const filtered = this.state.products.filter(
-      product => product.category === "Pantry"
+      (product) => product.category === "Pantry"
     );
     this.setState({
       activeItem: name,
       filteredProducts: filtered,
-      activePage: 1
+      activePage: 1,
     });
   };
 
@@ -243,14 +243,14 @@ class ProductListing extends React.Component {
                       />
                     ))} */}
 
-                {paginatedProducts.map(product => (
+                {paginatedProducts.map((product) => (
                   <ProductListItem
                     key={product.id}
                     product={product}
                     addToCart={addToCart}
                     removeFromCart={removeFromCart}
                     cartItem={
-                      cart.filter(cartItem => cartItem.id === product.id)[0]
+                      cart.filter((cartItem) => cartItem.id === product.id)[0]
                     }
                   />
                 ))}
@@ -281,25 +281,22 @@ class ProductListing extends React.Component {
 function mapStateToProps(state) {
   return {
     cart: state.cart,
-    products: state.products
+    products: state.products,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadProducts: products => {
+    loadProducts: (products) => {
       dispatch({ type: "LOAD", payload: products });
     },
-    addToCart: item => {
+    addToCart: (item) => {
       dispatch({ type: "ADD", payload: item });
     },
-    removeFromCart: item => {
+    removeFromCart: (item) => {
       dispatch({ type: "REMOVE", payload: item });
-    }
+    },
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductListing);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListing);

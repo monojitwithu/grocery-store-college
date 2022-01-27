@@ -5,7 +5,7 @@ import {
   Grid,
   Header,
   Segment,
-  Divider
+  Divider,
 } from "semantic-ui-react";
 import { withRouter, Redirect } from "react-router-dom";
 
@@ -15,19 +15,19 @@ class Login extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
     };
   }
 
   //Collect info as it is typed and update state
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist();
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleLogin = event => {
+  handleLogin = (event) => {
     event.preventDefault();
     this.fetchLogin();
   };
@@ -40,17 +40,17 @@ class Login extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         user: {
           username: this.state.username,
-          password: this.state.password
-        }
-      })
+          password: this.state.password,
+        },
+      }),
     })
-      .then(response => response.json())
-      .then(response => {
+      .then((response) => response.json())
+      .then((response) => {
         console.log(response.user);
         //store jwt token in local storage
         if (response.jwt === undefined) {
@@ -61,7 +61,7 @@ class Login extends Component {
           this.props.history.push("/");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error: ", err);
       });
   }
@@ -112,7 +112,7 @@ class Login extends Component {
                   content="Register"
                   icon="signup"
                   size="big"
-                  onClick={event => this.handleRegisterClick(event)}
+                  onClick={(event) => this.handleRegisterClick(event)}
                 />
               </Grid.Column>
             </Grid>

@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
 class Navigation extends Component {
-  handleLogInButton = event => {
+  handleLogInButton = (event) => {
     this.props.history.push("/login");
   };
 
-  handleLogOutButton = event => {
+  handleLogOutButton = (event) => {
     localStorage.clear();
     localStorage.removeItem("state");
     this.props.history.push("/login");
@@ -17,7 +17,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Container size="100%" >
+      <Container size="100%">
         <Menu>
           <Menu.Item>
             <Flag name="in" />
@@ -92,7 +92,7 @@ class Navigation extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 }
 
