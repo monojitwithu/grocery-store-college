@@ -9,9 +9,9 @@ export default function fetchApi(method, url, data) {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "X-Requested-With": "XMLHttpRequest"
+      "X-Requested-With": "XMLHttpRequest",
     },
     credentials: "same-origin",
-    ...body
-  }).then(response => response.json());
+    ...body,
+  }).then((response) => response.json());
 }

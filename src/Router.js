@@ -8,7 +8,7 @@ import RegisterPage from "./pages/registerpage";
 import CheckoutPage from "./pages/checkoutpage";
 import OrdersPage from "./pages/orderspage";
 import OrderHistory from "./pages/orderhistorypage";
-import MainHome from './Components/MainHome'
+import MainHome from "./Components/MainHome";
 
 const Router = () => (
   <Switch>

@@ -15,12 +15,12 @@ function OrderListCard(props) {
         <Card.Description>
           Total: ${parseFloat(props.order.order_total).toFixed(2)}{" "}
         </Card.Description>
-        <br></br>
+        <br />
 
         <Card.Description>
           <u>Items Ordered</u>
           <List>
-            {props.order.order_items.map(item => (
+            {props.order.order_items.map((item) => (
               <List.Item key={item.id}>
                 <Image avatar src={item.product.image_url} />
                 <List.Content>{item.product.name}</List.Content>

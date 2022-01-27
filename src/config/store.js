@@ -25,7 +25,7 @@ function loadFromLocalStorage() {
 const rootReducer = combineReducers({
   cart: cartReducer,
   products: productsReducer,
-  form: formReducer
+  form: formReducer,
 });
 
 const persistedState = loadFromLocalStorage();

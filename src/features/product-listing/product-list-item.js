@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
 
 import AddBtn from "./add-btn";
@@ -37,7 +21,8 @@ export default function ProductListItem(props) {
       <Card.Content extra textAlign="center">
         {" "}
         <Card.Description>
-        ₹ 18{parseFloat(props.product.price).toFixed(2)} per {props.product.size}
+          ₹ 18{parseFloat(props.product.price).toFixed(2)} per{" "}
+          {props.product.size}
         </Card.Description>
       </Card.Content>
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Select = props => {
+export const Select = (props) => {
   const renderSelectOptions = (key, index) => {
     return (
       <option key={`${index}-${key}`} value={key}>
@@ -23,7 +23,7 @@ export const Select = props => {
       </div>
     );
   }
-  return <div></div>;
+  return <div />;
 };
 
 export default Select;

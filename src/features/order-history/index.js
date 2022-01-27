@@ -13,15 +13,15 @@ class Profile extends React.Component {
     fetchApi(
       "get",
       `https://grocery-delivery-backend.herokuapp.com/api/v1/orders`
-    ).then(json => {
+    ).then((json) => {
       const data = json;
-      const filtered = data.filter(order => {
+      const filtered = data.filter((order) => {
         return order.user_id === this.currentUser.id;
       });
       this.setState({
         allOrders: json,
         currentUserOrders: filtered,
-        loading: false
+        loading: false,
       });
     });
   }
@@ -38,7 +38,7 @@ class Profile extends React.Component {
         ) : (
           <Grid verticalAlign="middle" centered>
             <Card.Group itemsPerRow={2}>
-              {this.state.currentUserOrders.map(order => (
+              {this.state.currentUserOrders.map((order) => (
                 <OrderListCard key={order.id} order={order} />
               ))}
             </Card.Group>
