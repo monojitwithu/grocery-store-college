@@ -1,5 +1,5 @@
 import React from 'react';
-import homeimage from '../img/home-img.png'
+import homeimage from                                                         '../img/home-img.png'
 import banner1 from '../img/banner-1.jpg'
 import banner2 from '../img/banner-2.jpg'
 import deal from '../img/deal-bg.jpg'
